@@ -1,11 +1,32 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
 const Hero = () => {
   return (
     <Wrapper>
-      <HeroImage src="/images/hero-img.jpg" />
-      <Swoop src="/swoop.svg" />
+      <picture>
+        <source
+          type="image/avif"
+          srcSet={
+            ("/images/hero-img.jpg".replace(".jpg", ".avif"),
+            "/images/hero-img.jpg".replace(".jpg", "@2x.avif 2x"),
+            "/images/hero-img.jpg".replace(".jpg", "@3x.avif 3x"))
+          }
+        />
+        <source
+          type="image/jpg"
+          srcSet={
+            ("/images/hero-img.jpg".replace(".jpg", ".jpg"),
+            "/images/hero-img.jpg".replace(".jpg", "@2x.jpg 2x"),
+            "/images/hero-img.jpg".replace(".jpg", "@3x.jpg 3x"))
+          }
+        />
+        <HeroImage
+          alt="An example of the photos distributed through this site (cat on black background)"
+          src="/images/hero-img.jpeg"
+        />
+      </picture>
+      <Swoop alt="" src="/swoop.svg" />
     </Wrapper>
   );
 };
